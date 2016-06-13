@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>
+          萌驴户外
+      </title>
+      <!-- 用户CSS文件 -->
+      <!-- build:css styles/index.css-->
+<!--       <link rel="stylesheet" href="./styles/swiper.min.css"> -->
+      <link rel="stylesheet" type="text/css" href="./styles/index.css">
+      <!-- endbuild -->
+
+  </head>
+  <body>
+    <div class="container">
+      <component :is='currentView' :params='params'></component>
+    </div>
+
+    <script>
+      document.documentElement.style.fontSize = 100 * innerWidth / 750+ 'px';
+      addEventListener('load', function() {
+        setTimeout(function(){
+            document.documentElement.style.fontSize = 100 * innerWidth / 750 + 'px';
+        }, 480);
+        // 判断窗口是否在一个框架中
+        var isInApp = (window.self != window.top);
+        if (!isInApp) {
+            window.parent.postMessage({name: 'web:inject', token: Math.random().toString(), usertype: 1}, '*');
+        }
+      })
+      addEventListener('orientationchange', function() {
+          document.documentElement.style.fontSize = 100 * innerWidth / 750 + 'px'
+      });
+    </script>
+    <script src="./js/jquery-1.10.1.min.js"></script>
+    <!-- <script src="./js/swiper.jquery.min.js"></script> -->
+    <script src="./scripts/bundle.js"></script>
+
+  </body>
+</html>
